@@ -10,7 +10,7 @@
 /server/node_modules
 
 #project files
-/server/src/environments.ts
+/server/.env
 
 # IDEs and editors
 /.idea
