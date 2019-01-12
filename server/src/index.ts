@@ -18,6 +18,7 @@ class Server {
 		this.app = express();
 		this.config();
 		this.routes();
+		this.postMiddlewares();
 	}
 
 	config(): void {
@@ -26,12 +27,16 @@ class Server {
 		this.app.use(express.urlencoded({ extended: false }));
 		this.app.use(morgan("dev"));
 		this.app.use(cors());
+		this.app.use(JWTMiddleware.unless({path: ["/","/auth/login","/auth/signup"] }));
 	}
 
 	routes(): void {
 		this.app.use("/", indexRoutes);
 		this.app.use("/auth", authRoutes);
-		this.app.use("/api/games", JWTMiddleware, gamesRoutes);
+		this.app.use("/api/games", gamesRoutes);		
+	}
+
+	postMiddlewares(){
 		this.app.use(ErrorMiddleware);
 	}
 
