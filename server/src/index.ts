@@ -3,7 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 
 import { ErrorMiddleware } from "./middlewares/error.middleware";
-import { JtMiddleWare } from "./middlewares/jwt.middleware";
+import { JWTMiddleware } from "./middlewares/jwt.middleware";
 
 import indexRoutes from "./routes/index.routes";
 import gamesRoutes from "./routes/games.routes";
@@ -31,7 +31,7 @@ class Server {
 	routes(): void {
 		this.app.use("/", indexRoutes);
 		this.app.use("/auth", authRoutes);
-		this.app.use("/api/games", JtMiddleWare, gamesRoutes);
+		this.app.use("/api/games", JWTMiddleware, gamesRoutes);
 		this.app.use(ErrorMiddleware);
 	}
 

@@ -26,11 +26,14 @@ class AuthController {
 					const secret = process.env.JWT_SECRET;
 
 					jwt.sign(payload, secret, options, (err: any, token: any) => {
-						return res.status(200).json({
-							status: 401,
-							error: null,
-							token
-						});
+						return res
+							.header({ Authorization: "Bearer " + token })
+							.status(200)
+							.json({
+								status: 401,
+								error: null,
+								token
+							});
 					});
 				} else {
 					result.error = "Authentication error";
