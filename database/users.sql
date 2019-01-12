@@ -1,0 +1,11 @@
+USE ng_games;
+
+CREATE TABLE users (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100),
+    name VARCHAR(100),
+    password VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+DESCRIBE users;
