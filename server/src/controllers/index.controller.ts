@@ -2,7 +2,7 @@ import { Response, Request } from "express";
 
 class IndexController {
 	public index(req: Request, res: Response) {
-		res.send("Hello, this is the index route from controller");
+		res.sendFile('C:/laragon/www/ts-mean-app/server/src/index.html');
 	}
 }
 
