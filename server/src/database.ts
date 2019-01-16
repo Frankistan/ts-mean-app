@@ -1,13 +1,4 @@
 import mysql from "promise-mysql";
-import dotenv from "dotenv";
-
-const result = dotenv.config();
-
-if (result.error) {
-	throw result.error;
-}
-
-// console.log(result.parsed);
 
 const pool = mysql.createPool({
 	host: process.env.DB_HOST,

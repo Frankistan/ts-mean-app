@@ -1,7 +1,4 @@
 import expressJwt from "express-jwt";
-import dotenv from "dotenv";
-
-const result = dotenv.config();
 
 export const JWTMiddleware = expressJwt({
 	secret: "" + process.env.JWT_SECRET,

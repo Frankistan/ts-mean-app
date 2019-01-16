@@ -1,15 +1,20 @@
 import express, { Application } from "express";
 import morgan from "morgan";
 import cors from "cors";
+import dotenv from "dotenv";
 import { cleanFolder } from "./helpers/utils";
 
+//MIDDLEWARE
 import { ErrorMiddleware } from "./middlewares/error.middleware";
 import { JWTMiddleware } from "./middlewares/jwt.middleware";
 
+// ROUTES
 import indexRoutes from "./routes/index.routes";
 import gamesRoutes from "./routes/games.routes";
 import authRoutes from "./routes/auth.routes";
 import uploadRoutes from "./routes/upload.routes";
+
+dotenv.config();
 
 cleanFolder();
 
@@ -43,8 +48,7 @@ class Server {
 					"/auth/login",
 					"/auth/signup",
 					"/upload/single",
-					"upload/multiple",
-					
+					"upload/multiple"
 				]
 			})
 		);

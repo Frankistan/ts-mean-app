@@ -1,8 +1,8 @@
 import multer from "multer";
-import dotenv from "dotenv";
+
 import fsx from "fs-extra-promise";
 
-dotenv.config();
+
 
 const Storage = multer.diskStorage({
 	destination: function(
