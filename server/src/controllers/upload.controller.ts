@@ -1,8 +1,8 @@
-import { Response, Request } from "express";
+import { Response, Request } from "express"; 
 
 class UploadController {
-	public  single(req: Request, res: Response) {
-		console.log('file: ',req.file);
+	public single(req: Request, res: Response) {
+		console.log("file: ", req.file);
 
 		var pagina =
 			"<!doctype html><html><head></head><body>" +
@@ -11,10 +11,7 @@ class UploadController {
 		res.send(pagina);
 	}
 
-	public  multiple(req: Request, res: Response) {
-		
-	}
-
+	public multiple(req: Request, res: Response) {}
 }
 
 const uploadController = new UploadController();

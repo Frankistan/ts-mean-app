@@ -36,9 +36,18 @@ class Server {
 				optionsSuccessStatus: 200
 			})
 		);
-		// this.app.use( 
-		// 	JWTMiddleware.unless({ path: ["/", "/auth/login", "/auth/signup","upload/*","upload/multiple"] })
-		// );
+		this.app.use(
+			JWTMiddleware.unless({
+				path: [
+					"/",
+					"/auth/login",
+					"/auth/signup",
+					"/upload/single",
+					"upload/multiple",
+					
+				]
+			})
+		);
 	}
 
 	routes(): void {

@@ -30,5 +30,14 @@ const Storage = multer.diskStorage({
 	}
 });
 
-var MulterMiddleware = multer({ storage: Storage });
+var MulterMiddleware = multer({
+	storage: Storage,
+	fileFilter: (req: Express.Request, file: Express.Multer.File, callback) => {
+		if(!file.mimetype.match(/jpeg|jpg|png|gif$i/)){
+			callback(new Error("File type is not supported!"),false);
+		}
+
+		callback(null,true);
+	}
+});
 export default MulterMiddleware;
