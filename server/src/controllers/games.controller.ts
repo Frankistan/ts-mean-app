@@ -1,9 +1,7 @@
 import { Response, Request } from "express";
 import pool from "../database";
 
-
 class GamesController {
-
 	public async index(req: Request, res: Response): Promise<void> {
 		const games = await pool.query("SELECT * FROM games");
 		res.json(games);

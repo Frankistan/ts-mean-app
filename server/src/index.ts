@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { cleanFolder } from "./helpers/utils";
 
-//MIDDLEWARE
+// MIDDLEWARES
 import { ErrorMiddleware } from "./middlewares/error.middleware";
 import { JWTMiddleware } from "./middlewares/jwt.middleware";
 
@@ -26,12 +26,16 @@ class Server {
 	constructor() {
 		this.app = express();
 		this.config();
+		this.preMiddlewares();
 		this.routes();
 		this.postMiddlewares();
 	}
 
 	config(): void {
 		this.app.set("port", this.PORT);
+	}
+
+	preMiddlewares() {
 		this.app.use(express.json());
 		this.app.use(express.urlencoded({ extended: false }));
 		this.app.use(morgan("dev"));

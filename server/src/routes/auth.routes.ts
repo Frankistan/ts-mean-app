@@ -1,7 +1,6 @@
 import { Router } from "express";
 import authController from "../controllers/auth.controller";
 
-
 class AuthRoutes {
 	public router: Router = Router();
 
