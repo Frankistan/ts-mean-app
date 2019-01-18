@@ -1,10 +1,10 @@
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import pool from "../database";
 
 class AuthController {
-	public async login(req: Request, res: Response): Promise<void | any> {
+	public async login(req: Request, res: Response,next: NextFunction): Promise<void | any> {
 		const { email, password } = req.body;
 
 		const result = await pool.query("SELECT * FROM users WHERE email = ?", [
@@ -51,7 +51,7 @@ class AuthController {
 			});
 	}
 
-	public signup(req: Request, res: Response) {
+	public signup(req: Request, res: Response,next: NextFunction) {
 		bcrypt.hash(req.body.password, 10, async (err: any, hash: any) => {
 			if (err) {
 				return res.status(500).json({

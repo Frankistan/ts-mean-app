@@ -1,5 +1,4 @@
 import multer from "multer";
-
 import fsx from "fs-extra-promise";
 
 const Storage = multer.diskStorage({
@@ -32,7 +31,9 @@ var MulterMiddleware = multer({
 	storage: Storage,
 	fileFilter: (req: Express.Request, file: Express.Multer.File, callback) => {
 		if (!file.mimetype.match(/jpeg|jpg|png|gif$i/)) {
-			callback(new Error("File type is not supported!"), false);
+			console.log("file: ", file);
+			callback(new Error("unsupported_file"), false);
+			return false;
 		}
 
 		callback(null, true);

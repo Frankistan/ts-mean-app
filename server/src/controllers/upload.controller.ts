@@ -1,11 +1,8 @@
-import { Response, Request } from "express";
+import { Response, Request, NextFunction } from "express";
 
 class UploadController {
-	public single(req: Request, res: Response) {
-		console.log("file: ", req.file);
-		// if(err){
-		// 	return res.send({"message": "File type is not supported!"});
-		// }
+	public single(req: Request, res: Response,next: NextFunction) {
+
 		var pagina =
 			"<!doctype html><html><head></head><body>" +
 			"<p>Se subió el archivo correctamente</p>" +
