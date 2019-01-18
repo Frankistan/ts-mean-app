@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { cleanFolder } from "./helpers/utils";
 
 // MIDDLEWARES
+import { ErrorValidatorMiddleware } from "./middlewares/error-validator.middleware";
 import { ErrorMiddleware } from "./middlewares/error.middleware";
 import { JWTMiddleware } from "./middlewares/jwt.middleware";
 
@@ -66,6 +67,7 @@ class Server {
 	}
 
 	postMiddlewares() {
+		this.app.use(ErrorValidatorMiddleware);
 		this.app.use(ErrorMiddleware);
 	}
 
